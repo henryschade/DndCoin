@@ -1,4 +1,4 @@
-module CoinBase()
+module CoinBase(coinThickness, coinRadius, borderHeight, usableRadius)
 {
     union()
     {
@@ -25,7 +25,7 @@ module CoinBase()
                 );
 
                 cylinder(
-                    h = borderHeight,
+                    h = (borderHeight * 2),     // * 2 to make Preview render look correct. Does not hurt to keep for Final render as well.
                     r = usableRadius
                 );
             }

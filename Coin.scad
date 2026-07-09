@@ -11,4 +11,4 @@ showConstructionGuides = false;
 
 use <Core/CoinBase.scad>
 
-CoinBase();
+CoinBase(coinThickness, coinRadius, borderHeight, usableRadius);
