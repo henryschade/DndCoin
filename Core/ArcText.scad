@@ -26,6 +26,8 @@ module ArcText(
     }
 }
 
+// Internal helpers.
+
 module CharacterOnArc(
     character,
     angle,
