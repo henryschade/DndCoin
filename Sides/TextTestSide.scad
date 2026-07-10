@@ -1,6 +1,7 @@
 include <../Config.scad>
+include <../Core/ArcText.scad>
 
-module BlankSide()
+module TextTestSide()
 {
     union()
     {
@@ -20,5 +21,11 @@ module BlankSide()
                 );
             }
         }
+
+        // Top Text
+        ArcText("AETHARRIA", 0, 70);
+
+        // Bottom Text
+        ArcText("A Realm of Fractured Fantasies", 180, 130, -0.5, true, 2, "Arial", "Normal");
     }
 }
