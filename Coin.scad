@@ -9,6 +9,16 @@ showBoundingBoxes = false;
 previewMode = false;
 showConstructionGuides = false;
 
-use <Core/CoinBase.scad>
+use <Core/CoinBody.scad>
+use <Sides/Blank.scad>
 
-CoinBase(coinThickness, coinRadius, borderHeight, usableRadius);
+union()
+{
+    translate([0, 0, -(coinBodyMiddle)])
+    {
+        CoinBody();
+    }
+    SideBlank();
+    mirror([0, 0, -1])
+        SideBlank();
+}

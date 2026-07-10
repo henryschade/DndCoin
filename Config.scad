@@ -5,5 +5,7 @@ borderHeight = 1.0;     // mm
 textHeight = 1.0;       // mm
 textFontSize = 10;      // font point size
 
+coinBodyThickness = coinThickness - (borderHeight * 2);
+coinBodyMiddle = coinBodyThickness / 2;
 coinRadius = coinDiameter / 2;
 usableRadius = coinRadius - borderWidth;
