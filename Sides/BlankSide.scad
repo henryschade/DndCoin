@@ -1,12 +1,10 @@
 include <../Config.scad>
 
-module SideBlank()
+module BlankSide()
 {
     union()
     {
-        //
         // Raised Border
-        //
         translate([0, 0, (coinBodyMiddle)])
         {
             difference()

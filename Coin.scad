@@ -10,15 +10,22 @@ previewMode = false;
 showConstructionGuides = false;
 
 use <Core/CoinBody.scad>
-use <Sides/Blank.scad>
+use <Sides/BlankSide.scad>
 
 union()
 {
+    // Create the main Coin Body
     translate([0, 0, -(coinBodyMiddle)])
     {
         CoinBody();
     }
-    SideBlank();
-    mirror([0, 0, -1])
-        SideBlank();
+
+    // Add the Front Side
+    BlankSide();
+
+    // Add the Back Side
+    mirror([0, 0, 1])
+    {
+        BlankSide();
+    }
 }
