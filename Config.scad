@@ -4,10 +4,6 @@ coinThickness = 3.5;    // mm
 borderWidth = 2.0;      // mm
 borderHeight = 1.0;     // mm
 textHeight = 1.0;       // mm
-// Thinking of removing these next 3, based on current ArcText() work that has been done.
-textSize = 3;           // Font size, in model units (mm)
-textFont = "Arial";     // "Arial", "Liberation Sans"
-textWeight = "Bold";    // "Normal", "Bold"
 
 // Derived values, using User-configurable values, needed for any given coin.
 coinBodyThickness = coinThickness - (borderHeight * 2);

@@ -4,20 +4,16 @@ module ArcText(
     text,
     centerAngle,
     arc,
-    offsetFromBorder = 0,
-    upsideDown = false,
-    arcTextSize = 0,
-    arcTextFont = "",
-    arcTextWeight = ""
+    offsetFromBorder,
+    size,
+    font = "Arial",
+    weight = "Normal",
+    upsideDown = false
 )
 {
-    textSize = (arcTextSize == 0) ? textSize : arcTextSize;
-    textFont = (arcTextFont == "") ? textFont : arcTextFont;
-    textWeight = (arcTextWeight == "") ? textWeight : arcTextWeight;
-
     characterCount = len(text);
     anglePerCharacter = (characterCount > 1) ? arc / (characterCount - 1) : 0;
-    radius = usableRadius - borderWidth - offsetFromBorder;
+    radius = usableRadius - (size / 2) - offsetFromBorder;
     startAngle = (upsideDown == false) ? (centerAngle - (arc / 2)) * -1 : (centerAngle - (arc / 2));
 
     for (charIndex = [ 0 : characterCount - 1 ])
@@ -26,7 +22,7 @@ module ArcText(
             (upsideDown == false) ? startAngle - (charIndex * anglePerCharacter) : startAngle + (charIndex * anglePerCharacter);
         character = text[charIndex];
 
-        CharacterOnArc(character, currentAngle, radius, upsideDown, textSize, textFont, textWeight);
+        CharacterOnArc(character, currentAngle, radius, size, font, weight, upsideDown);
     }
 }
 
@@ -34,20 +30,17 @@ module CharacterOnArc(
     character,
     angle,
     radius,
-    upsideDown = false,
-    charTextSize = 0,
-    charTextFont = "",
-    charTextWeight = ""
+    size,
+    font = "",
+    weight = "",
+    upsideDown = false
 )
 {
     charRotation = (upsideDown == false) ? 0 : 180;
-    textSize = (charTextSize == 0) ? textSize : charTextSize;
-    textFont = (charTextFont == "") ? textFont : charTextFont;
-    textWeight = (charTextWeight == "") ? textWeight : charTextWeight;
 
     rotate([0, 0, angle])
     {
-        translate([0, radius, (coinBodyThickness - 0.75)])
+        translate([0, radius, (coinBodyThickness / 2)])
         {
             rotate([0, 0, charRotation])
             {
@@ -55,14 +48,14 @@ module CharacterOnArc(
                 {
                     //color("cyan")
                     //color("red")
-                    text(
-                        character,
-                        size = textSize,
-                        //font = textFont,
-                        font = str(textFont, ":style=", textWeight),
-                        halign = "center",
-                        valign = "center"
-                    );
+                        text(
+                            character,
+                            size = size,
+                            //font = font,
+                            font = str(font, ":style=", weight),
+                            halign = "center",
+                            valign = "center"
+                        );
                 }
             }
         }
