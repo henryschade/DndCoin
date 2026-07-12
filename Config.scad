@@ -3,7 +3,7 @@ coinDiameter = 50.0;    // mm
 coinThickness = 3.5;    // mm
 borderWidth = 2.0;      // mm
 borderHeight = 1.0;     // mm
-textHeight = 1.0;       // mm
+reliefHeight = 1.0;       // mm
 
 // Derived values, using User-configurable values, needed for any given coin.
 coinBodyThickness = coinThickness - (borderHeight * 2);

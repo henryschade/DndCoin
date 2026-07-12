@@ -1,9 +1,10 @@
-include <../Config.scad>
+include <../Config.scad>;
+
+use <Ring.scad>;
 
 module CoinBody()
 {
 	// Coin Body
-
 	cylinder(
 		h = coinBodyThickness,
 		r = coinRadius
@@ -12,20 +13,10 @@ module CoinBody()
 
 module CoinBorder()
 {
-	// Raised Border
-	translate([0, 0, (coinBodyThickness / 2)])
-	{
-		difference()
-		{
-			cylinder(
-				h = borderHeight,
-				r = coinRadius
-			);
-
-			cylinder(
-				h = (borderHeight + 0.1),     // + 0.1 to make Preview render look correct. Does not hurt to keep for Final render as well.
-				r = usableRadius
-			);
-		}
-	}
+	// Raised Border - thin wrapper around Ring().
+    Ring(
+        radius = (usableRadius + (borderWidth / 2)),
+        width = borderWidth,
+        height = borderHeight
+    );
 }

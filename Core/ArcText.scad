@@ -4,7 +4,7 @@ module ArcText(
     text,
     centerAngle,
     arc,
-    offsetFromBorder,
+    offsetFromBorder = 0.5,
     size,
     font = "Arial",
     weight = "Normal",
@@ -26,6 +26,7 @@ module ArcText(
     }
 }
 
+
 // Internal helpers.
 
 module CharacterOnArc(
@@ -46,7 +47,7 @@ module CharacterOnArc(
         {
             rotate([0, 0, charRotation])
             {
-                linear_extrude(height = textHeight)
+                linear_extrude(height = reliefHeight)
                 {
                     //color("cyan")
                     //color("red")
